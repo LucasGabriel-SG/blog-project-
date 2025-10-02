@@ -4,7 +4,6 @@ import { Post } from "./post.model";
 import { Like } from "./like.model";
 
 
-
 @Table({
     tableName: 'comments',
     timestamps: false,

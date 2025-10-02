@@ -1,9 +1,10 @@
+
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, } from "class-validator";
 
 
-export class CreatePostDto {
-    create(post: CreatePostDto) {
+export class CreateCommentDto {
+    create(comment: CreateCommentDto) {
         throw new Error('Method not implemented.');
     }
 
@@ -13,12 +14,12 @@ export class CreatePostDto {
 
     @ApiProperty({ required: true })
     @IsString()
-    title: string;
+    content: string;
 
 
     @ApiProperty({ required: true })
     @IsString()
-    description: string;
+    text: string;
     is_active: boolean;
 
 
