@@ -1,18 +1,21 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, } from "class-validator";
+import { IsOptional, IsString, } from "class-validator";
+
+import { PostDto } from "./post.dto";
 
 
-export class CreatePostDto {
+export class CreatePostDto extends PostDto   {
 
+    @IsOptional()  
     @ApiProperty({ required: true })
     @IsString()
-    title: string;
+    id: number;
 
 
-    @ApiProperty({ required: true })
-    @IsString()
-    description: string;
-    is_active: boolean;
+
+
+
+
 
 
     

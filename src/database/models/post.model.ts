@@ -49,3 +49,4 @@ export class Post extends Model<Post> {
    
     
 }
+

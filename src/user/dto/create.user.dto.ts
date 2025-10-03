@@ -1,18 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
-import {  IsString } from "class-validator";
+import {  IsOptional} from "class-validator";
+import { CredentialsDto } from "./credential.user.dto";
 
 
-export class CreateUserDto {
-@ApiProperty({ required: true })
-@IsString()
-username: string;
-
-
-@ApiProperty({ required: true })
-@IsString()
-password: string;
-
-
+export class CreateUserDto extends CredentialsDto {
+@IsOptional()
 @ApiProperty({ required: false })
 is_active?: boolean;
 
