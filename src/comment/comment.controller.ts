@@ -1,22 +1,39 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { CreateCommentDto } from './dto/create.comment.dto';
+import { Body, Controller, Delete, HttpException, Param, Post, Res } from '@nestjs/common';
+import { CommentService } from './comment.service';
+import { CommentDto } from './dto/comment.dto';
+import type { Response } from 'express';
+import { DeleteCommentDto } from './dto/delete.comment.dto';
+import { Comment, CommentIdDto } from 'sequelize-typescript';
+
 
 @Controller('comment')
 export class CommentController {
-    deleteComment: any;
+    
 
-    constructor(private readonly createComment: CreateCommentDto, deleteComment: CreateCommentDto) { }
+    constructor(private readonly commentService: CommentService) { }
 
 
-    @Post('create')
-        create(@Body() comment: CreateCommentDto) {
-            this.createComment.create(comment);
-        }
+  @Post()
+    async create( @Res() response: Response,@Body() comment: CommentDto) {
+    await this.commentService.CreateComment(comment);
 
-        @Post('delete')
-        delete(@Body() comment: CreateCommentDto) {
-            this.deleteComment.delete(comment);
-        }
+    response.status(201).json({
+    mensagem: "Comentario Criado com Sucesso!"
+  })
 
+}
+
+@Delete(":id")
+   async update(@Param("id") { id }:CommentIdDto, @Res() response: Response, @Body() post: DeleteCommentDto ) {
+
+    await this.commentService.delete(comment, id)
+    response.status(200).json({
+      mensagem: "Comentario Deletado Com Sucesso!"
+    })
+   }
+
+
+   
+   
 
 }

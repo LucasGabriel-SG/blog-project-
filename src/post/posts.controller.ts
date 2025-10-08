@@ -1,5 +1,5 @@
 import { Body, Controller, Param, Patch, Post, Res } from '@nestjs/common';
-import { CreatePostDto } from './dto/create.post.dto';
+
 import { PostsService} from './posts.service';
 import type { Response } from 'express';
 import { PostIdDto } from './dto/post.id.dto.';
